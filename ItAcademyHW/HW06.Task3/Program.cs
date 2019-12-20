@@ -40,7 +40,8 @@ namespace HW06.Task3
             }
             timer.Stop();
             TimeSpan userMethodTime = timer.Elapsed;
-            Console.Write("User method time: " + userMethodTime.TotalMilliseconds);
+            timer.Reset();
+            Console.Write("User method time: " + userMethodTime.TotalMilliseconds + "ms");
 
             //for (int i = 0; i < arraySize; i++) //display array
             //{
@@ -50,13 +51,16 @@ namespace HW06.Task3
             //}
             Console.Write("\n\n");
 
+            
+
             ///////////
             Console.WriteLine("Reversing by Array.Reverse() method started. Please wait...");
             timer.Start();
             Array.Reverse(array1); // reverse array by .Net method
             timer.Stop();
             TimeSpan dotNetMethodTime = timer.Elapsed;
-            Console.Write("Array.Reverse() time: " + dotNetMethodTime.TotalMilliseconds);
+            timer.Reset();
+            Console.Write("Array.Reverse() time: " + dotNetMethodTime.TotalMilliseconds + "ms");
 
             //for (int i = 0; i < arraySize; i++) //display array
             //{
