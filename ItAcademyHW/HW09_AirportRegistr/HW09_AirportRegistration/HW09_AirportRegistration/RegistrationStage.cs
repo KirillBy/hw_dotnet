@@ -7,6 +7,5 @@
         SecurityCheck,
         PassportControl,
         Finished,
-        Failed
     }
 }
