@@ -32,6 +32,8 @@ namespace HW09_AirportRegistration
                     this.CheckInEvent(); 
                 if (value == RegistrationStage.SecurityCheck)
                     this.SecurityCheckEvent();
+                if (value == RegistrationStage.PassportControl)
+                    this.PassportControlEvent();
             }
         }
 
@@ -56,12 +58,56 @@ namespace HW09_AirportRegistration
                         break;
                     case RegistrationStage.SecurityCheck: SecurityCheckProcedure();
                         break;
-                    case RegistrationStage.PassportControl:
+                    case RegistrationStage.PassportControl: PassportControlProcedure();
                         break;
                     default:
                         break;
                 }
             }
+        }
+
+        private void PassportControlProcedure()
+        {
+            PassportDataControl();
+        }
+
+        private void PassportDataControl()
+        {
+            string firstnameCheck;
+            string secondnameCheck;
+
+            Console.WriteLine($"Custom inspector: Please tell me your full name {passanger.title}");
+            Console.WriteLine("First name: ");
+            firstnameCheck = Console.ReadLine();
+            Console.WriteLine("Second name: ");
+            secondnameCheck = Console.ReadLine();
+            Console.WriteLine($"Me: My name is {firstnameCheck} {secondnameCheck} ");
+            if (firstnameCheck != passanger.firstName || secondnameCheck != passanger.secondName)
+            {
+                string controlQuestion;
+                Console.WriteLine($"Custom inspector: Please tell me your date of " +
+                    $"your birth {passanger.title}. {firstnameCheck} {secondnameCheck}");
+                Console.WriteLine("Birth date(m/dd/yyyy): ");
+                controlQuestion = Console.ReadLine();
+                if (controlQuestion != passanger.birthDate.ToShortDateString())
+                {
+                    Console.WriteLine(passanger.birthDate.ToShortDateString());
+                    currentStatus = Status.Warning;
+                }
+                else
+                {
+                    Console.WriteLine($"Custom inspector: You can pass," +
+                        $" {passanger.title}. {passanger.firstName} {passanger.secondName}");
+                    HaveANiceFlightEvent(this);
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Custom inspector: You can pass," +
+                         $" {passanger.title}. {passanger.firstName} {passanger.secondName}");
+                HaveANiceFlightEvent(this);
+            }
+            
         }
 
         private void SecurityCheckProcedure()
@@ -70,7 +116,6 @@ namespace HW09_AirportRegistration
             if(currentStage != RegistrationStage.Finished)
             IllegalStaffCheck();
         }
-
         private void IllegalStaffCheck()
         {
             Console.WriteLine("Security: Thank you. Do you have any forbidden thing's ?");
@@ -82,29 +127,27 @@ namespace HW09_AirportRegistration
             }
             if (answ == "yes")
             {
-                Console.WriteLine("Me: Yes, I have");
-                Console.WriteLine("Security: In that case I'm going to call the police ");
+                Console.WriteLine("Me: Yes, I have.");
+                Console.WriteLine("Security: In that case I'm going to call the police. ");
                 currentStatus = Status.Warning;
             }
             else
             {
-                Console.WriteLine("Me: Of course - No.");
-                Console.WriteLine("Security: Thank you, now you can follow to Passport control ");
-                currentStage = RegistrationStage.PassportControl;
+                Console.WriteLine("Me: No.");
+                Console.WriteLine("Security: Thank you, now you can follow to Passport control. ");
+                CurrentStage = RegistrationStage.PassportControl;
             }
         }
-
         private void UltraVioletLine()
         {
             Console.WriteLine("Security: Please put your gadgets, bags, mettalic thing etc. on the line");
             string answ = string.Empty;
             while (answ != "put")
             {
-                Console.WriteLine("(put to put things on the line)");
+                Console.WriteLine("(put - to put things on the line)");
                 answ = Console.ReadLine();
             }
         }
-
         public void Stop()
         {
             currentStage = RegistrationStage.Finished;
@@ -180,6 +223,7 @@ namespace HW09_AirportRegistration
         public event Action<PreFlightProcedure> HaveANiceFlightEvent;
         public event Action CheckInEvent;
         public event Action SecurityCheckEvent;
+        public event Action PassportControlEvent;
 
     }
 }

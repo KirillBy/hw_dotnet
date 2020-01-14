@@ -13,8 +13,16 @@ namespace HW09_AirportRegistration
             registration.CheckInEvent += Registration_CheckInEvent;
             registration.RagistrationFailEvent += Registration_RagistrationFailEvent;
             registration.SecurityCheckEvent += Registration_SecurityCheckEvent;
+            registration.PassportControlEvent += Registration_PassportControlEvent;
             registration.Start();
             
+        }
+
+        private static void Registration_PassportControlEvent()
+        {
+            Console.WriteLine("***********************************************************************************\n\n");
+            Console.WriteLine("Aiport administrator: Passport control in progress...");
+            Console.WriteLine("Aiport administrator: Follow Custom Inspector intrusctions...");
         }
 
         private static void Registration_SecurityCheckEvent()
@@ -40,6 +48,7 @@ namespace HW09_AirportRegistration
 
         private static void Registration_HaveANiceFlightEvent(PreFlightProcedure registration)
         {
+            Console.WriteLine("***********************************************************************************\n\n");
             Console.WriteLine("Aiport administrator: Have a nice flight. " +
                 "We will be glad to see you again in Minsk");
             registration.Stop();
@@ -47,10 +56,9 @@ namespace HW09_AirportRegistration
 
         private static void Registration_CallThePoliceEvent(PreFlightProcedure registration)
         {
-            Console.WriteLine("Aiport administrator: Police calling ");
-            Console.Beep(); Console.Beep(); Console.Beep();
-            Console.WriteLine("Police: Lay down!!! You are held on suspicion on illegal transporting of " +
-                "illegal staff !!!!! ");
+            Console.WriteLine("Aiport administrator: Police calling");
+           // Console.Beep(); Console.Beep(); Console.Beep();
+            Console.WriteLine("Police: Lay down!!! You are held on suspicion of criminal");
             registration.Stop();
         }
     }
