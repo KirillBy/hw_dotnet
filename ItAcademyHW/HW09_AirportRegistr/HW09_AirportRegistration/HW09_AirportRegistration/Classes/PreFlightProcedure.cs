@@ -8,9 +8,8 @@ namespace HW09_AirportRegistration
     {
         private Passanger passanger;
         private bool checkInStatus;
-        private Status currentStatus
-        {
-            
+        private Status _currentStatus
+        {           
             set
             {
                 if (value == Status.Warning)
@@ -19,15 +18,14 @@ namespace HW09_AirportRegistration
                     RagistrationFailEvent(this);
             }
         }
-        private RegistrationStage currentStage;
+
+        private RegistrationStage _currentStage;
         public RegistrationStage CurrentStage
         {         
-            get { return currentStage; }
+            get { return _currentStage; }
             set
             {
-                currentStage = value;
-                if (value == RegistrationStage.Finished)
-                    this.HaveANiceFlightEvent(this);
+                _currentStage = value;
                 if (value == RegistrationStage.CheckIn)
                     this.CheckInEvent(); 
                 if (value == RegistrationStage.SecurityCheck)
@@ -36,21 +34,19 @@ namespace HW09_AirportRegistration
                     this.PassportControlEvent();
             }
         }
-
-
         public PreFlightProcedure(Passanger passanger, bool checkInStatus = false )
         {
             this.passanger = passanger;
             this.checkInStatus = checkInStatus;
-            currentStage = RegistrationStage.Beginning;
-            currentStatus = Status.Ok;
+            CurrentStage = RegistrationStage.Beginning;
+            _currentStatus = Status.Ok;
         }
         public void Start()
         {            
             
-            while (currentStage != RegistrationStage.Finished)
+            while (CurrentStage != RegistrationStage.Finished)
             {
-                switch (currentStage)
+                switch (CurrentStage)
                 {
                     case RegistrationStage.Beginning: Greeting();
                         break;
@@ -68,10 +64,29 @@ namespace HW09_AirportRegistration
 
         private void PassportControlProcedure()
         {
-            PassportDataControl();
+            if(passanger.citizenship == Citizenship.Resident)
+            PassportDataControlResident();
+            else
+            PassportDataControlNonResident();
         }
-
-        private void PassportDataControl()
+        private void PassportDataControlNonResident()
+        {
+            string visaDateS;
+            Console.WriteLine("Custom inspector: When your visa date expire ?");
+            Console.WriteLine("Visa date(m/dd/yyyy): ");
+            visaDateS = Console.ReadLine();
+            DateTime visaDate = DateTime.Parse(visaDateS);
+            
+            if (visaDate < DateTime.Now)
+            {
+                Console.WriteLine("Custom inspector: Your visa is out of date. " +
+                    "Police will be here in a second");
+               _currentStatus = Status.Warning;
+            }
+            if(CurrentStage != RegistrationStage.Finished)
+            PassportDataControlResident();
+        }
+        private void PassportDataControlResident()
         {
             string firstnameCheck;
             string secondnameCheck;
@@ -92,7 +107,7 @@ namespace HW09_AirportRegistration
                 if (controlQuestion != passanger.birthDate.ToShortDateString())
                 {
                     Console.WriteLine(passanger.birthDate.ToShortDateString());
-                    currentStatus = Status.Warning;
+                    _currentStatus = Status.Warning;
                 }
                 else
                 {
@@ -109,11 +124,10 @@ namespace HW09_AirportRegistration
             }
             
         }
-
         private void SecurityCheckProcedure()
         {
             UltraVioletLine();
-            if(currentStage != RegistrationStage.Finished)
+            if(CurrentStage != RegistrationStage.Finished)
             IllegalStaffCheck();
         }
         private void IllegalStaffCheck()
@@ -129,7 +143,7 @@ namespace HW09_AirportRegistration
             {
                 Console.WriteLine("Me: Yes, I have.");
                 Console.WriteLine("Security: In that case I'm going to call the police. ");
-                currentStatus = Status.Warning;
+                _currentStatus = Status.Warning;
             }
             else
             {
@@ -150,12 +164,12 @@ namespace HW09_AirportRegistration
         }
         public void Stop()
         {
-            currentStage = RegistrationStage.Finished;
+            CurrentStage = RegistrationStage.Finished;
         }
         private void CheckInProcedure()
         {
             PassportCheck();
-            if(currentStage != RegistrationStage.Finished)
+            if(CurrentStage != RegistrationStage.Finished)
             LuggageControl();
         }
         private void PassportCheck()
@@ -171,7 +185,7 @@ namespace HW09_AirportRegistration
             if (answ == "no")
             {
                 Console.WriteLine("Me: Oh, I've lost my passport(((");
-                currentStatus = Status.Failed;
+                _currentStatus = Status.Failed;
             }
             else
                 Console.WriteLine("Registrator: Thank you, here is your ticket.");
@@ -190,7 +204,7 @@ namespace HW09_AirportRegistration
                 if (answ == "no")
                 {
                     Console.WriteLine("Me: Oh, I don't have enought money");
-                    currentStatus = Status.Failed;
+                    _currentStatus = Status.Failed;
                 }
                 else
                 {

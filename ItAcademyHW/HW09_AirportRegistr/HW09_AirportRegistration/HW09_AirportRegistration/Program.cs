@@ -6,7 +6,7 @@ namespace HW09_AirportRegistration
     {
         static void Main(string[] args)
         {
-            Passanger passanger = new Passanger("Kiryl", "Balanovich", new DateTime(1991, 06, 23), 21);
+            Passanger passanger = new Passanger("Kiryl", "Balanovich", new DateTime(1991, 06, 23), 21, Citizenship.NonResident);
             PreFlightProcedure registration  = new PreFlightProcedure(passanger);
             registration.CallThePoliceEvent += Registration_CallThePoliceEvent;
             registration.HaveANiceFlightEvent += Registration_HaveANiceFlightEvent;
