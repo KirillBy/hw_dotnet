@@ -1,0 +1,3 @@
+2020-01-21 12:57:42,302 ERROR 1 HW_11.Logger - Incorrect income side ( <= 0). It's automaticaly changed to 1 
+2020-01-21 12:57:42,313 ERROR 1 HW_11.Logger - Incorrect income sides ( <= 0). It's automaticaly changed to 1 
+2020-01-21 12:57:42,330 ERROR 1 HW_11.Logger - Incorrect income radius ( <= 0). It's automaticaly changed to 1 

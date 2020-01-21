@@ -1,0 +1,35 @@
+2020-01-21 11:52:25,083 INFO 1 HW_11.Logger - Programm HW_11, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null has been started
+2020-01-21 11:52:25,111 INFO 1 HW_11.Logger - New Square is created with side 1.
+2020-01-21 11:52:25,119 INFO 1 HW_11.Logger - New Triangle is created with sides 1, 1, 1.
+2020-01-21 11:52:25,126 INFO 1 HW_11.Logger - New Circle is created with radius 1.
+2020-01-21 11:52:25,135 INFO 1 HW_11.Logger - New Square is created with side 1.
+2020-01-21 11:52:25,143 INFO 1 HW_11.Logger - New Triangle is created with sides 1, 1, 1.
+2020-01-21 11:52:25,153 INFO 1 HW_11.Logger - New Circle is created with radius 1.
+2020-01-21 11:52:25,162 INFO 1 HW_11.Logger - New Square is created with side 2.
+2020-01-21 11:52:25,170 INFO 1 HW_11.Logger - New Triangle is created with sides 2, 2, 2.
+2020-01-21 11:52:25,178 INFO 1 HW_11.Logger - New Circle is created with radius 2.
+2020-01-21 11:52:25,188 INFO 1 HW_11.Logger - New Square is created with side 3.
+2020-01-21 11:52:25,198 INFO 1 HW_11.Logger - New Triangle is created with sides 3, 3, 3.
+2020-01-21 11:52:25,206 INFO 1 HW_11.Logger - New Circle is created with radius 3.
+2020-01-21 11:52:25,218 INFO 1 HW_11.Logger - New Square is created with side 4.
+2020-01-21 11:52:25,226 INFO 1 HW_11.Logger - New Triangle is created with sides 4, 4, 4.
+2020-01-21 11:52:25,238 INFO 1 HW_11.Logger - New Circle is created with radius 4.
+2020-01-21 11:52:25,249 INFO 1 HW_11.Logger - New Square is created with side 5.
+2020-01-21 11:52:25,261 INFO 1 HW_11.Logger - New Triangle is created with sides 5, 5, 5.
+2020-01-21 11:52:25,270 INFO 1 HW_11.Logger - New Circle is created with radius 5.
+2020-01-21 11:52:25,279 INFO 1 HW_11.Logger - New Square is created with side 6.
+2020-01-21 11:52:25,289 INFO 1 HW_11.Logger - New Triangle is created with sides 6, 6, 6.
+2020-01-21 11:52:25,298 INFO 1 HW_11.Logger - New Circle is created with radius 6.
+2020-01-21 11:52:25,310 INFO 1 HW_11.Logger - New Square is created with side 7.
+2020-01-21 11:52:25,321 INFO 1 HW_11.Logger - New Triangle is created with sides 7, 7, 7.
+2020-01-21 11:52:25,335 INFO 1 HW_11.Logger - New Circle is created with radius 7.
+2020-01-21 11:52:25,345 INFO 1 HW_11.Logger - New Square is created with side 8.
+2020-01-21 11:52:25,354 INFO 1 HW_11.Logger - New Triangle is created with sides 8, 8, 8.
+2020-01-21 11:52:25,362 INFO 1 HW_11.Logger - New Circle is created with radius 8.
+2020-01-21 11:52:25,370 INFO 1 HW_11.Logger - New Square is created with side 9.
+2020-01-21 11:52:25,382 INFO 1 HW_11.Logger - New Triangle is created with sides 9, 9, 9.
+2020-01-21 11:52:25,390 INFO 1 HW_11.Logger - New Circle is created with radius 9.
+2020-01-21 11:52:25,404 INFO 1 HW_11.Logger - New Square is created with side 10.
+2020-01-21 11:52:25,417 INFO 1 HW_11.Logger - New Triangle is created with sides 10, 10, 10.
+2020-01-21 11:52:25,433 INFO 1 HW_11.Logger - New Circle is created with radius 10.
+2020-01-21 11:52:25,531 INFO 1 HW_11.Logger - Programm has been finished
