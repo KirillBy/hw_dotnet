@@ -6,6 +6,8 @@ namespace HW12
     {
         static void Main(string[] args)
         {
+            Logger.InitLogger();
+            Logger.Log.Info("Programm starts");
             var motoRepo = new Repository();
             var motoBMW = new Motorcycle(1, MotoNames.BMW, "I5", 2020);
             var motoHarley = new Motorcycle(2, MotoNames.HarleyDavidson, "HD20", 2019, 1956);
