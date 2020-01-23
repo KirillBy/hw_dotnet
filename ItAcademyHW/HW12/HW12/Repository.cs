@@ -7,51 +7,34 @@ namespace HW12
     class Repository : IRepository
     {
         private const int _arraySize = 15; 
-        private Motorcycle[] _storage = new Motorcycle[_arraySize];
-
+       //private Motorcycle[] _storage = new Motorcycle[_arraySize];
+        private static List<Motorcycle> _storage  = new List<Motorcycle>();
         public void Create(Motorcycle entity)
         {
-            bool freePlace = false;
-            for (int i = 0; i < _storage.Length; i++)
-            {
-                if (_storage[i] == null )
-                {
-                    _storage[i] = entity;
-                    freePlace = true;
-                    break;
-                }
-                    
-            }
-            if(!freePlace)
-            Console.WriteLine("No empty place in array. Delete some motoes");
+            _storage.Add(entity);
         }
 
         public void Delete(Motorcycle entity)
         {
-            for(int i = 0; i < _storage.Length; i++)
-            {
-                if (_storage[i] != null && _storage[i].Equals(entity))
-                    _storage[i] = null;
-            }
+            _storage.Remove(entity);
         }
 
         public Motorcycle ReadById(uint Id)
         {
-            for (int i = 0; i < _storage.Length; i++)
+            foreach (var item in _storage)
             {
-                if (_storage[i].Id == Id)
-                    return _storage[i];
+                if (item.Id == Id)
+                    return item;
             }
             return null;
         }
 
         public void Update(Motorcycle entity, uint newOdometr)
         {
-            for (int i = 0; i < _storage.Length; i++)
+            foreach (var item in _storage)
             {
-                
-                if (_storage[i] != null && _storage[i].Equals(entity))
-                    _storage[i].Odometr = newOdometr;
+                if (item == entity && item.Odometr < newOdometr)
+                    item.Odometr = newOdometr;
             }
         }
     }
