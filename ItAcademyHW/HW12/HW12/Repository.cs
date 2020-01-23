@@ -6,16 +6,20 @@ namespace HW12
 {
     class Repository : IRepository
     {
-        private const int _arraySize = 15; 
-       //private Motorcycle[] _storage = new Motorcycle[_arraySize];
+
         private static List<Motorcycle> _storage  = new List<Motorcycle>();
         public void Create(Motorcycle entity)
         {
+
+            Logger.Log.Info($"New moto {entity.Name} has been added to list. ID: {entity.Id}, " +
+                $"Model: {entity.Model}, Year: {entity.Year}, Odometr: {entity.Odometr}");
             _storage.Add(entity);
         }
 
         public void Delete(Motorcycle entity)
         {
+            Logger.Log.Info($"New moto {entity.Name} has been deleted from list. ID: {entity.Id}, " +
+             $"Model: {entity.Model}, Year: {entity.Year}, Odometr: {entity.Odometr}");
             _storage.Remove(entity);
         }
 
@@ -34,7 +38,12 @@ namespace HW12
             foreach (var item in _storage)
             {
                 if (item == entity && item.Odometr < newOdometr)
-                    item.Odometr = newOdometr;
+                {
+                    Logger.Log.Info($"Moto {entity.Name} has been update odometr from {entity.Odometr} to {newOdometr}: {entity.Id}, " +
+                         $"Model: {entity.Model}, Year: {entity.Year}");
+                      item.Odometr = newOdometr;
+                }
+                    
             }
         }
     }

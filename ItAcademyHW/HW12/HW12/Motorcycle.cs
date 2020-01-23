@@ -23,12 +23,16 @@ namespace HW12
 
         public Motorcycle(uint Id, MotoNames Name, string Model, uint Year, uint Odometr = 0)
         {
+            Logger.Log.Info($"New moto {Name} has been created");
             this.Id = Id;
             this.Name = Name;
             this.Model = Model;
             this.Year = Year;
             if (Year < 1940 || Year > int.Parse(DateTime.Now.Year.ToString()))
-                throw new ArgumentOutOfRangeException("Incorrect year");
+            {
+               Logger.Log.Error("Incorrect year of moto");
+               throw new ArgumentOutOfRangeException("Incorrect year");
+            }                
             this._odometr = Odometr;
         }
     }

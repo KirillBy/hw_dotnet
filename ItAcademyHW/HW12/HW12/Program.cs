@@ -7,7 +7,7 @@ namespace HW12
         static void Main(string[] args)
         {
             Logger.InitLogger();
-            Logger.Log.Info("Programm starts");
+            Logger.Log.Info($"Programm {System.Reflection.Assembly.GetExecutingAssembly().GetName().FullName} has been started");
             var motoRepo = new Repository();
             var motoBMW = new Motorcycle(1, MotoNames.BMW, "I5", 2020);
             var motoHarley = new Motorcycle(2, MotoNames.HarleyDavidson, "HD20", 2019, 1956);
@@ -26,6 +26,7 @@ namespace HW12
             var newMoto = motoRepo.ReadById(3);
             motoRepo.Delete(motoSuzuki);
             motoRepo.Create(newMoto);
+            Logger.Log.Info($"Programm {System.Reflection.Assembly.GetExecutingAssembly().GetName().FullName} has been finished");
         }
     }
 }
